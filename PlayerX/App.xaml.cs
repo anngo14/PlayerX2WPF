@@ -41,6 +41,7 @@ namespace PlayerX
             {
                 //Create File with Default Directories
                 CreateInitialFile(file);
+                OpenFile(file);
             }
             _navigationStore.CurrentViewModel = new TitleViewModel(_navigationStore, _menuItems);
 
@@ -78,7 +79,7 @@ namespace PlayerX
                     Folder = new Folder
                     {
                         Title = "Videos",
-                        Directory = "C:\\Users\\Andrew\\Desktop\\Dramas"
+                        Directory = "C:\\Users\\Andrew\\Videos"
                     }
                 };
 
