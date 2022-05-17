@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="PlayerX.Views.Settings.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PlayerX.Views.Settings"
+             xmlns:settingsViewModels="clr-namespace:PlayerX.ViewModels.Settings"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="1280">
+    <Grid>
+        <TextBlock x:Name="FolderName" HorizontalAlignment="Left" Margin="25,25,0,0" TextWrapping="Wrap" Text="Settings" VerticalAlignment="Top" Foreground="White" FontSize="48"/>
+        <Button Width="60" Height="60" HorizontalAlignment="Right" Margin="0,25,25,0" VerticalAlignment="Top" FontSize="36" Command="{Binding HomeCommand}" Background="Transparent" BorderBrush="Transparent">
+            <Image Source="/Images/home.png"/>
+        </Button>
+        <Separator HorizontalAlignment="Stretch" Margin="25,110,25,0" VerticalAlignment="Top" Background="White" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="25,125,0,0" TextWrapping="Wrap" Text="Folders" VerticalAlignment="Top" Foreground="White" FontSize="36"/>
+        <Button HorizontalAlignment="Right" Margin="0,200,25,0" VerticalAlignment="Top" FontSize="36" Command="{Binding AddFolderCommand}" Height="60" Width="300" Background="Transparent" >
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Add Folder" Foreground="White" Margin="0,0,15,0"/>
+                <Image Source="/Images/add-circle-512.png"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="DirectoryBtn" Width="60" Height="60" HorizontalAlignment="Left" Margin="700,200,0,0" VerticalAlignment="Top" FontSize="36" Command="{Binding ChooseDirCommand}" CommandParameter="settings" Background="Transparent" BorderBrush="Transparent">
+            <Image Source="/Images/directoryicon.png"/>
+        </Button>
+        <TextBox x:Name="TitleText" HorizontalAlignment="Left" Margin="25,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="650" FontSize="36" Text="{Binding FolderName}" Height="60" />
+        <ScrollViewer Margin="25,300,25,25" VerticalScrollBarVisibility="Hidden">
+            <StackPanel HorizontalAlignment="Stretch" >
+                <ItemsControl ItemsSource="{Binding FolderItems}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type settingsViewModels:FolderItemViewModel}">
+                            <local:FolderItem Height="200" HorizontalAlignment="Stretch" Margin="50,0,50,25"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

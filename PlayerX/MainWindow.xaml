@@ -1,0 +1,45 @@
+﻿<Window x:Class="PlayerX.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:homeViewModels="clr-namespace:PlayerX.ViewModels.Home"
+        xmlns:folderViewModels="clr-namespace:PlayerX.ViewModels.FolderView"
+        xmlns:settingsViewModels="clr-namespace:PlayerX.ViewModels.Settings"
+        xmlns:titleViewModels="clr-namespace:PlayerX.ViewModels.Title"
+        xmlns:playerViewModels="clr-namespace:PlayerX.ViewModels.Player"
+        xmlns:homeViews="clr-namespace:PlayerX.Views.Home"
+        xmlns:folderViews="clr-namespace:PlayerX.Views.FolderView"
+        xmlns:settingsViews="clr-namespace:PlayerX.Views.Settings"
+        xmlns:titleViews="clr-namespace:PlayerX.Views.Title"
+        xmlns:playerViews="clr-namespace:PlayerX.Views.Player"
+        mc:Ignorable="d"
+        Title="PlayerX" Height="720" Width="1280" Background="Black"
+        WindowState="Maximized"
+        WindowStyle="None"
+        Name="PlayerWindow" KeyDown="PlayerWindow_KeyDown">
+    <Window.InputBindings>
+        <KeyBinding Key="Backspace" Command="{Binding HomeCommand}"></KeyBinding>
+    </Window.InputBindings>
+    <Grid>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type titleViewModels:TitleViewModel}">
+                <titleViews:TitleView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type homeViewModels:HomeViewModel}">
+                <homeViews:HomeView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type folderViewModels:FolderViewViewModel}">
+                <folderViews:FolderViewView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type playerViewModels:PlayerViewModel}">
+                <playerViews:PlayerView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type settingsViewModels:SettingsViewModel}">
+                <settingsViews:SettingsView />
+            </DataTemplate>
+        </Grid.Resources>
+
+        <ContentControl Content="{Binding CurrentViewModel}" />
+    </Grid>
+</Window>

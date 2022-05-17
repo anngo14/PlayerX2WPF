@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="PlayerX.Views.FolderView.FolderViewView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PlayerX.Views.FolderView"
+             xmlns:folderViewModels="clr-namespace:PlayerX.ViewModels.FolderView"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="1280">
+    <UserControl.Background>
+        <ImageBrush ImageSource="/Images/videoBackground.jpg"/>
+    </UserControl.Background>
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="25,25,0,0" TextWrapping="Wrap" Text="{Binding Folder.Title}" VerticalAlignment="Top" Foreground="White" FontSize="36"/>
+        <TextBlock HorizontalAlignment="Left" Margin="25,115,0,0" VerticalAlignment="Top" Foreground="LightGray" FontSize="32" Text="{Binding Folder.Directory}"/>
+        <Button Width="60" Height="60" HorizontalAlignment="Right" Margin="0,25,25,0" VerticalAlignment="Top" FontSize="36" Command="{Binding HomeCommand}" Background="Transparent" BorderBrush="Transparent">
+            <Image Source="/Images/home.png"/>
+        </Button>
+        <Button HorizontalAlignment="Right" Margin="0,115,25,0" VerticalAlignment="Top" FontSize="36" Height="60" Width="60" Command="{Binding SortCommand}" Background="WhiteSmoke" Padding="0,10,0,10">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Images/sort.png" />
+            </StackPanel>
+        </Button>
+        <ScrollViewer HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="50,200,50,50" VerticalScrollBarVisibility="Hidden">
+            <Grid Height="auto" VerticalAlignment="Top">
+                <ItemsControl ItemsSource="{Binding MediaItems}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="6" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type folderViewModels:MediaItemViewModel}">
+                            <local:MediaItem Height="300" Width="250" Margin="0,0,0,25"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

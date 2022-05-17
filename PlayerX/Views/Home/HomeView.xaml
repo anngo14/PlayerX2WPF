@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="PlayerX.Views.Home.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PlayerX.Views.Home"
+             xmlns:homeViewModels="clr-namespace:PlayerX.ViewModels.Home"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="1280">
+    <UserControl.Background>
+        <ImageBrush ImageSource="/Images/homeBackground.jpg"/>
+    </UserControl.Background>
+    <Grid>
+        <TextBlock Name="Clock" HorizontalAlignment="Left" Margin="25,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontSize="36" Text="{Binding Time}"/>
+        <Button HorizontalAlignment="Right" Margin="0,25,25,0" VerticalAlignment="Top" FontSize="36" Width="60" Height="60" Command="{Binding ExitCommand}" Background="Transparent" BorderBrush="Transparent">
+            <Image Source="/Images/power-512.png"/>
+        </Button>
+        <ScrollViewer x:Name="HomeScrollView" Margin="50,125,0,50" HorizontalAlignment="Left" MinWidth="800" VerticalScrollBarVisibility="Hidden">
+            <StackPanel HorizontalAlignment="Left">
+                <ItemsControl ItemsSource="{Binding MenuItems}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type homeViewModels:HomeItemViewModel}">
+                            <local:HomeItem Height="200" Width="800" Margin="0,0,0,25" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
+        <Button x:Name="SettingsBtn" HorizontalAlignment="Right" Margin="0,25,100,0" VerticalAlignment="Top" FontSize="36" Width="60" Height="60" Command="{Binding SettingsCommand}" Background="Transparent" BorderBrush="Transparent">
+            <Image Source="/Images/settingsicon.png"/>
+        </Button>
+    </Grid>
+</UserControl>
