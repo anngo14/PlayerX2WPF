@@ -26,12 +26,12 @@
                 <ItemsControl ItemsSource="{Binding MediaItems}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <UniformGrid Columns="6" />
+                            <UniformGrid Columns="5" />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate DataType="{x:Type folderViewModels:MediaItemViewModel}">
-                            <local:MediaItem Height="300" Width="250" Margin="0,0,0,25"/>
+                            <local:MediaItem Height="350"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>

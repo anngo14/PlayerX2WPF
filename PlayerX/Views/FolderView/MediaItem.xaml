@@ -4,12 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PlayerX.Views.FolderView"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="250">
-    <Grid MaxWidth="300">
-        <Image HorizontalAlignment="Center" Height="200" VerticalAlignment="Top" Width="200" Margin="0,5,0,0" Source="/Images/mediafile.png"/>
-        <TextBlock x:Name="FileNameText" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding Media.FileName}" VerticalAlignment="Bottom" Foreground="White" TextAlignment="Center" Margin="0,0,0,50" FontSize="25"/>
-        <Button Background="Transparent" Command="{Binding PlayerCommand}" BorderBrush="Transparent" Width="250" Height="300" Opacity="0.25">
+             mc:Ignorable="d" >
+    <Grid>
+        <Image HorizontalAlignment="Center" Height="200" VerticalAlignment="Top" Width="200" Source="/Images/mediafile.png"/>
+        <TextBlock x:Name="FileNameText" HorizontalAlignment="Center" TextWrapping="Wrap" MaxWidth="200" Text="{Binding Media.FileName}" VerticalAlignment="Top" Foreground="White" TextAlignment="Center" Margin="0,200,0,0" FontSize="24"/>
+        <Button Background="Transparent" Command="{Binding PlayerCommand}" BorderBrush="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Opacity="0.25">
         </Button>
     </Grid>
 </UserControl>
