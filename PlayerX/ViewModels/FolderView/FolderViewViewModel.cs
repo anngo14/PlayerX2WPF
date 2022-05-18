@@ -2,6 +2,7 @@
 using PlayerX.Commands.FolderViewCommands;
 using PlayerX.Models;
 using PlayerX.Stores;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -36,8 +37,11 @@ namespace PlayerX.ViewModels.FolderView
                     var file = allFiles[i];
                     var fullFileName = GetFullFileName(file);
                     var tmp = fullFileName.Split(".");
-                    var fileName = tmp[0];
-                    var fileExtension = tmp[1];
+                    var fileNameArray = new string[tmp.Length - 1];
+                    Array.Copy(tmp, fileNameArray, tmp.Length - 1);
+                    var fileName = string.Join(".", fileNameArray);
+                    var fileExtension = tmp[tmp.Length - 1];
+                    
                     if (!IsValidExtension(fileExtension))
                     {
                         continue;
