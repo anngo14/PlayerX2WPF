@@ -1,10 +1,5 @@
 ﻿using PlayerX.ViewModels;
 using PlayerX.ViewModels.Settings;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PlayerX.Commands.SettingsCommands
 {
@@ -19,11 +14,7 @@ namespace PlayerX.Commands.SettingsCommands
         {
             if(parameter.ToString() == "settings")
             {
-                (_viewModel as SettingsViewModel).ChooseFolder();
-            } 
-            else if(parameter.ToString() == "folderItem")
-            {
-                (_viewModel as FolderItemViewModel).ChooseFolder();
+                (_viewModel as SettingsViewModel).ChooseDirectory();
             }
         }
     }

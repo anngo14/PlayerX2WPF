@@ -13,27 +13,16 @@
             <Image Source="/Images/home.png"/>
         </Button>
         <Separator HorizontalAlignment="Stretch" Margin="25,110,25,0" VerticalAlignment="Top" Background="White" Foreground="White"/>
-        <TextBlock HorizontalAlignment="Left" Margin="25,125,0,0" TextWrapping="Wrap" Text="Folders" VerticalAlignment="Top" Foreground="White" FontSize="36"/>
-        <Button HorizontalAlignment="Right" Margin="0,200,25,0" VerticalAlignment="Top" FontSize="36" Command="{Binding AddFolderCommand}" Height="60" Width="300" Background="Transparent" >
+        <TextBlock HorizontalAlignment="Left" Margin="25,125,0,0" TextWrapping="Wrap" Text="Master Directory" VerticalAlignment="Top" Foreground="White" FontSize="36"/>
+        <Button HorizontalAlignment="Right" Margin="0,200,25,0" VerticalAlignment="Top" FontSize="36" Command="{Binding AddDirCommand}" Height="60" Width="300" Background="Transparent" >
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Add Folder" Foreground="White" Margin="0,0,15,0"/>
+                <TextBlock Text="Add Directory" Foreground="White" Margin="0,0,15,0"/>
                 <Image Source="/Images/add-circle-512.png"/>
             </StackPanel>
         </Button>
         <Button x:Name="DirectoryBtn" Width="60" Height="60" HorizontalAlignment="Left" Margin="700,200,0,0" VerticalAlignment="Top" FontSize="36" Command="{Binding ChooseDirCommand}" CommandParameter="settings" Background="Transparent" BorderBrush="Transparent">
             <Image Source="/Images/directoryicon.png"/>
         </Button>
-        <TextBox x:Name="TitleText" HorizontalAlignment="Left" Margin="25,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="650" FontSize="36" Text="{Binding FolderName}" Height="60" />
-        <ScrollViewer Margin="25,300,25,25" VerticalScrollBarVisibility="Hidden">
-            <StackPanel HorizontalAlignment="Stretch" >
-                <ItemsControl ItemsSource="{Binding FolderItems}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate DataType="{x:Type settingsViewModels:FolderItemViewModel}">
-                            <local:FolderItem Height="200" HorizontalAlignment="Stretch" Margin="50,0,50,25"/>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </StackPanel>
-        </ScrollViewer>
+        <TextBlock x:Name="TitleText" HorizontalAlignment="Left" Margin="25,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="650" FontSize="36" Text="{Binding MasterDirectory}" Height="60" Background="White" />
     </Grid>
 </UserControl>
