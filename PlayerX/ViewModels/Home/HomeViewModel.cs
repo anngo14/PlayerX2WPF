@@ -5,6 +5,7 @@ using PlayerX.Stores;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace PlayerX.ViewModels.Home
@@ -38,7 +39,8 @@ namespace PlayerX.ViewModels.Home
             _time = "";
 
             MenuItems = new ObservableCollection<HomeItemViewModel>();
-            foreach (var menu in menuItems)
+            var _menuItems = menuItems.OrderBy(x => x.Name);
+            foreach (var menu in _menuItems)
             {
                 var homeItemViewModel = new HomeItemViewModel(navigationStore, menuItems)
                 {
