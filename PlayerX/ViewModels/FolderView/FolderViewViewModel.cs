@@ -30,7 +30,7 @@ namespace PlayerX.ViewModels.FolderView
 
                 //Get All files in Directory and Subdirectories
                 string[] allFiles = Directory.GetFiles(_folder.Directory, "*", SearchOption.AllDirectories);
-
+                allFiles = allFiles.OrderBy(x => x.Length).ThenBy(x => x).ToArray();
                 //Add Files as Media items
                 for(int i = 0; i < allFiles.Length; i++)
                 {
